@@ -1,9 +1,9 @@
 package com.revolut.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
 
-import com.revolut.db.InMemoryDB;
-import com.revolut.repo.impl.InMemoryTransactionRepo;
+import com.revolut.repo.TransactionRepo;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -16,8 +16,7 @@ public class TransactionServiceTest {
 
   @Test
   public void transactionIdShouldBeUnique() throws InterruptedException {
-    var db = new InMemoryDB();
-    var repo = new InMemoryTransactionRepo(db);
+    var repo = mock(TransactionRepo.class);
     var service = new TransactionService(repo);
     int nThreads = 1000;
     ExecutorService executor = Executors.newFixedThreadPool(nThreads);

@@ -25,7 +25,7 @@ public class Validators {
             String.format("Balance cannot be smaller than %d",
                 MIN_ACC_CREATION_BALANCE_INCLUDING.intValue()))
         .check(acc -> acc.getName().length() <= MAX_NAME_LENGTH,
-            String.format("Name cannot be longer then %d", MAX_NAME_LENGTH))
+            String.format("Name cannot be longer than %d", MAX_NAME_LENGTH))
         .getOrNull();
   }
 
@@ -33,7 +33,7 @@ public class Validators {
     return ctx
         .bodyValidator(UpdateAccountRequest.class)
         .check(req -> req.getName().length() <= MAX_NAME_LENGTH,
-            String.format("Name cannot be longer then %d", MAX_NAME_LENGTH))
+            String.format("Name cannot be longer than %d", MAX_NAME_LENGTH))
         .getOrNull();
   }
 
